@@ -1,9 +1,11 @@
 extends Node2D
-signal please_shake_the_screen
+
+export(PackedScene) var l2
 
 var ball
 var hole
 signal ball_in_hole
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -11,6 +13,7 @@ signal ball_in_hole
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$BallMagicSpot/Camera2D.make_current()
 	ball = $PongBall
 	hole = $BallMagicSpot
 	pass # Replace with function body.
@@ -24,22 +27,8 @@ func _process(delta):
 
 
 
-func _on_Player_may_construct_pong_court():
-	emit_signal("please_shake_the_screen")
-	#make_ball_shine()
-	#adjust_ball_position_and_rotation()
-	#lift_up_the_ball_drawing_the_net()
-	#disappear_the_ball()
-	#enter_enemy()
-	#appear_the_score_board()
-	#appear_the_ball()
-	#start_the_game()
-	pass # Replace with function body.
-
-
-func _on_Level1_please_shake_the_screen():
-	pass # Replace with function body.
-
 
 func _on_Level1_ball_in_hole():
+	$Backgroung.flash(Color.white, 100, 0.01)
+	SceneChanger.change_scene_to(l2)
 	pass # Replace with function body.

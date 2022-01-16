@@ -1,0 +1,45 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Level1Room.tres" type="TileSet" id=1]
+[ext_resource path="res://BallMagicSpot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PongBall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CRTShader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stick.tscn" type="PackedScene" id=5]
+[ext_resource path="res://TileMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Level2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Level1.gd" type="Script" id=8]
+[ext_resource path="res://Backgroung.tscn" type="PackedScene" id=9]
+[ext_resource path="res://blackShader.gdshader" type="Shader" id=10]
+
+[sub_resource type="ShaderMaterial" id=11]
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 10 )
+
+[node name="Level1" type="Node2D"]
+material = SubResource( 11 )
+position = Vector2( 1, 1 )
+script = ExtResource( 8 )
+l2 = ExtResource( 7 )
+
+[node name="Backgroung" parent="." instance=ExtResource( 9 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+
+[node name="PongBall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 517, 752 )
+
+[node name="TileMap" parent="." instance=ExtResource( 6 )]
+material = SubResource( 10 )
+tile_set = ExtResource( 1 )
+
+[node name="BallMagicSpot" parent="." instance=ExtResource( 2 )]
+
+[node name="Stick" parent="." instance=ExtResource( 5 )]
+
+[node name="CRTShader" parent="." instance=ExtResource( 4 )]
+
+[connection signal="ball_in_hole" from="." to="." method="_on_Level1_ball_in_hole" flags=6]

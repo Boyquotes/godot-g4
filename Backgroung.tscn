@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Backgroung.gd" type="Script" id=1]
+
+[node name="Backgroung" type="ColorRect"]
+margin_left = -3.0
+margin_top = 511.0
+margin_right = 65.0
+margin_bottom = 542.0
+rect_scale = Vector2( 7.64, 8.28 )
+color = Color( 0.00784314, 0.145098, 0, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
